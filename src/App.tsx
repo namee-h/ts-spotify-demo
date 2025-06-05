@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { Route, Routes } from "react-router";
 import "./App.css";
 import LoadingSpinner from "./common/components/loadingSpinner/LoadingSpinner";
+import CallbackPage from "./pages/CallbackPage";
 
 const AppLayout = React.lazy(() => import("./layout/AppLayout"));
 const HomePage = React.lazy(() => import("./pages/HomePage/HomePage"));
@@ -27,6 +28,8 @@ function App() {
     //리액트 컴포넌트가 로딩상태일때 관리해주는 도구
     <Suspense fallback={<LoadingSpinner />}>
       <Routes>
+        <Route path="/callback" element={<CallbackPage />} />
+
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
           <Route path="search" element={<SearchPage />} />
