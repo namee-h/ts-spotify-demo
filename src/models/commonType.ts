@@ -1,6 +1,6 @@
 export interface ExternalUrls {
   external_urls: {
-    spotify: string;
+    spotify?: string;
   };
 }
 export interface Image {
@@ -10,4 +10,14 @@ export interface Image {
 }
 export interface Restriction {
   reason?: string;
+}
+
+export interface Followers {
+  href?: string | null;
+  total?: number;
+}
+
+export interface ExplicitContent {
+  filter_enabled?: boolean;
+  filter_locked?: boolean;
 }
