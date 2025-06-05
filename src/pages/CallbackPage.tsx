@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import useExchangeToken from "../hooks/useExchangeToken";
+import LoadingSpinner from "../common/components/loadingSpinner/LoadingSpinner";
 
 const CallbackPage = () => {
   const navigate = useNavigate();
@@ -14,15 +15,20 @@ const CallbackPage = () => {
     },
   });
 
+  const hasRunRef = useRef(false);
+
   useEffect(() => {
-    if (code && codeVerifier) {
+    if (hasRunRef.current) return;
+    if (!hasRunRef.current && code && codeVerifier) {
+      hasRunRef.current = true;
       exchangeToken({ code, codeVerifier });
+      window.history.replaceState({}, "", window.location.pathname);
     } else {
       console.error("❌ code 또는 code_verifier 없음");
     }
   }, [code, codeVerifier, exchangeToken]);
 
-  return <div style={{ color: "white" }}>🔄 Spotify 인증 처리 중...</div>;
+  return <LoadingSpinner />;
 };
 
 export default CallbackPage;
