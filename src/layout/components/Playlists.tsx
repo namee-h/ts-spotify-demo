@@ -12,7 +12,7 @@ const Playlists = ({ playlists }: PlaylistsProps) => {
       display="flex"
       flexDirection="column"
       gap={1}
-      sx={{ paddingBottom: "60px" }}
+      sx={{ paddingBottom: "8px" }}
     >
       {playlists.map((playlist) => (
         <Box
