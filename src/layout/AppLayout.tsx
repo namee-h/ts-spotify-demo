@@ -77,7 +77,9 @@ const AppLayout = () => {
             </StyledNavLink>
           </NavList>
         </ContentBox>
-        <ContentBox height="100%">
+        <ContentBox
+          sx={{ height: "100%", overflow: "hidden", marginBottom: 0 }}
+        >
           <LibraryHead />
           <Library />
         </ContentBox>
@@ -87,6 +89,7 @@ const AppLayout = () => {
           display: "flex",
           flexDirection: "column",
           height: "100%",
+          marginRight: 0,
         }}
       >
         <Box sx={{ flex: "none" }}>
@@ -95,6 +98,7 @@ const AppLayout = () => {
         <Box
           sx={{
             flex: 1,
+            overflowX: "hidden",
             overflowY: "auto",
             scrollbarWidth: "none", // Firefox
             "&::-webkit-scrollbar": {
