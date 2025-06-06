@@ -47,7 +47,7 @@ interface CardProps {
 const Card = ({ image, name, artistName }: CardProps) => {
   return (
     <CardContainer>
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", overflow: "hidden" }}>
         <AlbumImage src={image} alt="album-img" />
         <Overlay className="overlay">
           <PlayButton />

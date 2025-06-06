@@ -82,9 +82,28 @@ const AppLayout = () => {
           <Library />
         </ContentBox>
       </Sidebar>
-      <ContentBox>
-        <Navbar />
-        <Outlet />
+      <ContentBox
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+        }}
+      >
+        <Box sx={{ flex: "none" }}>
+          <Navbar />
+        </Box>
+        <Box
+          sx={{
+            flex: 1,
+            overflowY: "auto",
+            scrollbarWidth: "none", // Firefox
+            "&::-webkit-scrollbar": {
+              display: "none", // Chrome, Safari
+            },
+          }}
+        >
+          <Outlet />
+        </Box>
       </ContentBox>
     </Layout>
   );
