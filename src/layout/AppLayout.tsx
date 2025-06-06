@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 
 const Layout = styled("div")({
   display: "flex",
-  height: "100vh",
+  height: "100dvh",
   padding: "8px",
 });
 
@@ -20,6 +20,7 @@ const Sidebar = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   [theme.breakpoints.down("sm")]: { display: "none" },
+  marginRight: "8px",
 }));
 
 const ContentBox = styled(Box)(({ theme }) => ({
@@ -81,7 +82,7 @@ const AppLayout = () => {
           <Library />
         </ContentBox>
       </Sidebar>
-      <ContentBox marginLeft="8px">
+      <ContentBox>
         <Navbar />
         <Outlet />
       </ContentBox>

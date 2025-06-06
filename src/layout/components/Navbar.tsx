@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Avatar, Box, IconButton, Menu, MenuItem, styled } from "@mui/material";
+import React from "react";
+import { Avatar, Box, styled } from "@mui/material";
 import LoginButton from "../../common/components/buttons/LoginButton";
 import useGetCurrentUserProfile from "../../hooks/useGetCurrentUserProfile";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -26,7 +26,6 @@ const Navbar = () => {
         justifyContent: "flex-end",
         alignItems: "center",
         height: "64px",
-        pr: 2,
       }}
     >
       {userProfile ? (
