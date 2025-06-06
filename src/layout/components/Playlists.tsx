@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { SimplifiedPlaylist } from "../../models/playlist";
-
+import fallbackImage from "../assets/no-image.png";
 interface PlaylistsProps {
   playlists: SimplifiedPlaylist[];
 }
@@ -28,7 +28,7 @@ const Playlists = ({ playlists }: PlaylistsProps) => {
           }}
         >
           <img
-            src={playlist.images?.[0]?.url || "/no-image.png"}
+            src={playlist.images?.[0]?.url || fallbackImage}
             alt={playlist.name}
             style={{
               width: 50,
