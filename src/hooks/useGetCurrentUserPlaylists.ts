@@ -2,7 +2,6 @@ import {
   InfiniteData,
   useInfiniteQuery,
   UseInfiniteQueryResult,
-  useQuery,
 } from "@tanstack/react-query";
 import { getCurrentUserPlaylists } from "../apis/playlistApi";
 import {
