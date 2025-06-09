@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import { Box } from "@mui/material";
 import { SimplifiedPlaylist } from "../../models/playlist";
 import PlaylistItem from "../../common/components/PlaylistItem";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 interface PlaylistsProps {
   playlists: SimplifiedPlaylist[];
 }
 
 const Playlists = ({ playlists }: PlaylistsProps) => {
-  const [selectedId, setSelectedId] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { id: selectedId } = useParams<{ id: string }>();
   const handleClick = (id: string) => {
-    setSelectedId(id);
     navigate(`/playlist/${id}`);
   };
   return (
