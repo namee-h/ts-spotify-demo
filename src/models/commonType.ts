@@ -8,7 +8,7 @@ export interface Image {
   height: number | null;
   width: number | null;
 }
-export interface Restriction {
+export interface Restrictions {
   reason?: string;
 }
 
@@ -29,4 +29,15 @@ export interface Owner {
   type?: string;
   uri?: string;
   display_name?: string | null;
+}
+
+export interface externalIds {
+  isrc?: string;
+  ean?: string;
+  upc?: string;
+}
+
+export interface Copyrights {
+  text?: string;
+  type?: "C" | "P";
 }
