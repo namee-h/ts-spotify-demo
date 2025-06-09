@@ -4,7 +4,7 @@ import fallbackImage from "../../../common/assets/no-image.png";
 import { GetPlaylistResponse } from "../../../models/playlist";
 
 const HeadContainer = styled(Box)({
-  padding: "32px 16px",
+  padding: "20px 16px",
 });
 
 const PlaylistTitle = styled(Typography)(({ theme }) => ({
