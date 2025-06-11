@@ -3,6 +3,7 @@ import { Avatar, Box, styled } from "@mui/material";
 import LoginButton from "../../common/components/buttons/LoginButton";
 import useGetCurrentUserProfile from "../../hooks/useGetCurrentUserProfile";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useNavigate } from "react-router";
 
 const ProfileContainer = styled("div")({
   display: "flex",
@@ -12,11 +13,13 @@ const ProfileContainer = styled("div")({
 });
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const { data: userProfile } = useGetCurrentUserProfile();
   console.log("user_profile data:", userProfile);
   const logout = () => {
     localStorage.removeItem("access_token");
-    window.location.reload(); // or navigate to login page
+    navigate("/");
+    window.location.reload();
   };
 
   return (
