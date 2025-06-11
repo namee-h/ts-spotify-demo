@@ -31,7 +31,7 @@ export interface Owner {
   display_name?: string | null;
 }
 
-export interface externalIds {
+export interface ExternalIds {
   isrc?: string;
   ean?: string;
   upc?: string;

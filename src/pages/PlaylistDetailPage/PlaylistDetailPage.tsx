@@ -1,27 +1,60 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useGetPlaylist from "../../hooks/useGetPlaylist";
 import { Navigate, useParams } from "react-router";
 import PlaylistHead from "./components/PlaylistHead";
-import { Box } from "@mui/material";
+import { Box, styled, Typography } from "@mui/material";
+import useGetPlaylistItems from "../../hooks/useGetPlaylistItems";
+import LoadingSpinner from "../../common/components/loadingSpinner/LoadingSpinner";
+import ErrorMessage from "../../common/components/ErrorMessage";
+import PlaylistItem from "./components/PlaylistItem";
+import { PAGE_LIMIT } from "../../configs/commonConfig";
+import { useInView } from "react-intersection-observer";
+
+const PlaylistDetailContainer = styled(Box)({
+  position: "relative",
+  overflowX: "hidden",
+  width: "100%",
+  borderTopLeftRadius: "8px",
+  borderTopRightRadius: "8px",
+  marginTop: "20px",
+});
 
 const PlaylistDetailPage = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { data: playlist } = useGetPlaylist({ playlist_id: id! });
-  console.log("playlist-detail", playlist);
+  const {
+    data: playlist,
+    isLoading: isPlaylistLoading,
+    error: playlistError,
+  } = useGetPlaylist({ playlist_id: id! });
+  // console.log("playlist-detail", playlist);
+
+  const {
+    data: playlistItems,
+    isLoading: isPlaylistItemsLoading,
+    error: playlistItemsError,
+    hasNextPage,
+    isFetchingNextPage,
+    fetchNextPage,
+  } = useGetPlaylistItems({ playlist_id: id!, limit: PAGE_LIMIT });
+  console.log("playlist-item", playlistItems);
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
   if (!id) {
     return <Navigate to="/" />;
   }
+  if (isPlaylistLoading || isPlaylistItemsLoading) return <LoadingSpinner />;
+  if (playlistError)
+    return <ErrorMessage errorMessage={playlistError.message} />;
+  if (playlistItemsError)
+    return <ErrorMessage errorMessage={playlistItemsError.message} />;
   return (
-    <Box
-      sx={{
-        position: "relative",
-        overflow: "hidden",
-        width: "100%",
-        borderRadius: "8px",
-        marginTop: "20px",
-      }}
-    >
+    <PlaylistDetailContainer>
       <Box
         sx={{
           position: "absolute",
@@ -36,10 +69,24 @@ const PlaylistDetailPage = () => {
 
       <Box sx={{ position: "relative", zIndex: 1, padding: "32px" }}>
         {playlist && <PlaylistHead playlist={playlist} />}
-
-        {/* <PlaylistItem tracks={playlist.tracks.items} /> */}
+        {playlist?.tracks?.total === 0 ? (
+          <Typography>search</Typography>
+        ) : (
+          <Box>
+            {playlistItems && <PlaylistItem playlistItems={playlistItems} />}
+            {isFetchingNextPage ? (
+              <div
+                ref={ref}
+                className="loader"
+                style={{ margin: "32px auto", display: "block" }}
+              />
+            ) : (
+              <div ref={ref} />
+            )}
+          </Box>
+        )}
       </Box>
-    </Box>
+    </PlaylistDetailContainer>
   );
 };
 
