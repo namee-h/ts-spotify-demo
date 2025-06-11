@@ -20,6 +20,7 @@ const PlaylistDetailContainer = styled(Box)({
 });
 
 const PlaylistDetailPage = () => {
+  const [scrolled, setScrolled] = React.useState(false);
   const { id } = useParams<{ id: string }>();
 
   const {
@@ -39,6 +40,10 @@ const PlaylistDetailPage = () => {
   } = useGetPlaylistItems({ playlist_id: id!, limit: PAGE_LIMIT });
   console.log("playlist-item", playlistItems);
   const { ref, inView } = useInView();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [id]);
 
   useEffect(() => {
     if (inView && hasNextPage && !isFetchingNextPage) {
