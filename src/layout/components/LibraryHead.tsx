@@ -4,6 +4,7 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import { Button } from "@mui/material";
+import useCreatePlaylist from "../../hooks/useCreatePlaylist";
 const LibraryTitle = styled("div")({
   display: "flex",
   alignItems: "center",
@@ -12,7 +13,10 @@ const LibraryTitle = styled("div")({
 });
 
 const LibraryHead = () => {
-  const handleCreatePlaylist = () => {};
+  const { mutate: createPlaylist } = useCreatePlaylist();
+  const handleCreatePlaylist = () => {
+    createPlaylist({ name: "나의 플레이리스트" });
+  };
   return (
     <LibraryTitle>
       <BookmarkIcon />
