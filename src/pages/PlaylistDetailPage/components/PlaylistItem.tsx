@@ -17,7 +17,7 @@ interface PlaylistItemProps {
 
 const PlaylistItem = ({ playlistItems }: PlaylistItemProps) => {
   return (
-    <Box sx={{ height: "100%", overflowY: "auto" }}>
+    <Box sx={{ height: "100%", overflowY: "auto", position: "relative" }}>
       <Table>
         <TableHead>
           <TableRow>

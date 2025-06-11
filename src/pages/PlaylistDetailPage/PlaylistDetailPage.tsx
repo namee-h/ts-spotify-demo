@@ -12,11 +12,29 @@ import { useInView } from "react-intersection-observer";
 
 const PlaylistDetailContainer = styled(Box)({
   position: "relative",
-  overflowX: "hidden",
   width: "100%",
-  borderTopLeftRadius: "8px",
-  borderTopRightRadius: "8px",
+  height: "100vh",
+  overflow: "hidden",
+  display: "flex",
+  flexDirection: "column",
   marginTop: "20px",
+});
+
+const PlaylistHeadWrapper = styled(Box)({
+  position: "relative",
+  zIndex: 1,
+  padding: "32px",
+  flexShrink: 0,
+});
+
+const ScrollableContent = styled(Box)({
+  flex: 1,
+  overflowY: "auto",
+  scrollbarWidth: "none",
+  msOverflowStyle: "none",
+  "&::-webkit-scrollbar": {
+    display: "none",
+  },
 });
 
 const PlaylistDetailPage = () => {
@@ -65,6 +83,8 @@ const PlaylistDetailPage = () => {
           position: "absolute",
           top: 0,
           left: 0,
+          borderTopLeftRadius: "8px",
+          borderTopRightRadius: "8px",
           width: "100%",
           height: "350px",
           background: "linear-gradient(to bottom,rgb(50, 168, 115), #121212)",
@@ -72,25 +92,37 @@ const PlaylistDetailPage = () => {
         }}
       />
 
-      <Box sx={{ position: "relative", zIndex: 1, padding: "32px" }}>
+      <PlaylistHeadWrapper>
         {playlist && <PlaylistHead playlist={playlist} />}
+      </PlaylistHeadWrapper>
+
+      <ScrollableContent>
         {playlist?.tracks?.total === 0 ? (
           <Typography>search</Typography>
         ) : (
           <Box>
             {playlistItems && <PlaylistItem playlistItems={playlistItems} />}
             {isFetchingNextPage ? (
-              <div
+              <Box
                 ref={ref}
                 className="loader"
-                style={{ margin: "32px auto", display: "block" }}
+                sx={{
+                  height: "40px",
+                  display: "block",
+                  margin: "32px auto",
+                }}
               />
             ) : (
-              <div ref={ref} />
+              <Box
+                ref={ref}
+                sx={{
+                  height: "40px",
+                }}
+              />
             )}
           </Box>
         )}
-      </Box>
+      </ScrollableContent>
     </PlaylistDetailContainer>
   );
 };

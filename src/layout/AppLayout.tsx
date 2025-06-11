@@ -95,7 +95,8 @@ const AppLayout = () => {
         <Box sx={{ flex: "none" }}>
           <Navbar />
         </Box>
-        <Box
+        <Outlet />
+        {/* <Box
           sx={{
             flex: 1,
             overflowX: "hidden",
@@ -107,7 +108,7 @@ const AppLayout = () => {
           }}
         >
           <Outlet />
-        </Box>
+        </Box> */}
       </ContentBox>
     </Layout>
   );

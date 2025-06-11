@@ -12,12 +12,12 @@ const PlaylistTitle = styled(Typography)(({ theme }) => ({
   color: "white",
   lineHeight: 1.2,
   marginBottom: theme.spacing(2),
-  fontSize: "28px",
+  fontSize: "25px",
   [theme.breakpoints.up("sm")]: {
-    fontSize: "36px",
+    fontSize: "30px",
   },
   [theme.breakpoints.up("md")]: {
-    fontSize: "48px",
+    fontSize: "35px",
   },
 }));
 
