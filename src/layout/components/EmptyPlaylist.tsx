@@ -1,5 +1,6 @@
 import { Box, Button, styled, Typography } from "@mui/material";
 import React from "react";
+import { getSpotifyAuthUrl } from "../../utils/auth";
 
 const EmptyPlaylistCard = styled(Box)(({ theme }) => ({
   borderRadius: "8px",
@@ -15,6 +16,9 @@ const CreatePlaylistBtn = styled(Button)({
 });
 
 const EmptyPlaylist = () => {
+  const handleToLogin = () => {
+    getSpotifyAuthUrl();
+  };
   return (
     <EmptyPlaylistCard>
       <Box>
@@ -23,7 +27,11 @@ const EmptyPlaylist = () => {
         </Typography>
         <Typography variant="h2">It's easy, we'll help you</Typography>
       </Box>
-      <CreatePlaylistBtn variant="contained" color="secondary">
+      <CreatePlaylistBtn
+        variant="contained"
+        color="secondary"
+        onClick={handleToLogin}
+      >
         Create playlist
       </CreatePlaylistBtn>
     </EmptyPlaylistCard>

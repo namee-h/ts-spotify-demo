@@ -18,7 +18,7 @@ const Navbar = () => {
   console.log("user_profile data:", userProfile);
   const logout = () => {
     localStorage.removeItem("access_token");
-    navigate("/");
+    // navigate("/");
     window.location.reload();
   };
 
