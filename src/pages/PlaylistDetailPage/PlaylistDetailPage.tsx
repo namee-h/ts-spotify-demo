@@ -55,7 +55,7 @@ const PlaylistDetailPage = () => {
     isLoading: isPlaylistLoading,
     error: playlistError,
   } = useGetPlaylist({ playlist_id: id! });
-  // console.log("playlist-detail", playlist);
+  console.log("playlist-detail", playlist);
 
   const {
     data: playlistItems,
@@ -65,7 +65,7 @@ const PlaylistDetailPage = () => {
     isFetchingNextPage,
     fetchNextPage,
   } = useGetPlaylistItems({ playlist_id: id!, limit: PAGE_LIMIT });
-  console.log("playlist-item", playlistItems);
+  // console.log("playlist-item", playlistItems);
   const { ref, inView } = useInView();
 
   useEffect(() => {
