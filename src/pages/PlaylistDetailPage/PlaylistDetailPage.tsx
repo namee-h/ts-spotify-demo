@@ -34,7 +34,7 @@ const PlaylistHeadWrapper = styled(Box)({
   zIndex: 1,
   padding: "10px",
   flexShrink: 0,
-  maxHeight: "250px",
+  maxHeight: "270px",
 });
 
 const ScrollableContent = styled(Box)({
@@ -151,7 +151,7 @@ const PlaylistDetailPage = () => {
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
           width: "100%",
-          height: "250px",
+          height: "270px",
           background: "linear-gradient(to bottom,rgb(50, 168, 115), #121212)",
           zIndex: 0,
         }}
