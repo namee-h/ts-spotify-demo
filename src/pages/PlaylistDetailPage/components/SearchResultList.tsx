@@ -2,13 +2,24 @@ import React from "react";
 import { Track } from "../../../models/track";
 import { Avatar, Box, Button, List, ListItem, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import useAddTrackToPlaylist from "../../../hooks/useAddTrackToPlaylist";
 
 interface SearchResultListProps {
   list: Track[];
-  onAddClick?: (track: Track) => void;
 }
 
-const SearchResultList = ({ list, onAddClick }: SearchResultListProps) => {
+const SearchResultList = ({ list }: SearchResultListProps) => {
+  const { mutate: addTrack } = useAddTrackToPlaylist();
+
+  const handleAddClick = (track: Track) => {
+    if (!track.uri) {
+      console.warn("❌ 트랙에 uri 없음:", track);
+      return;
+    }
+    addTrack({
+      uris: [track.uri],
+    });
+  };
   return (
     <List sx={{ maxWidth: "100%", width: "100%" }}>
       {list.map((track) => (
@@ -37,7 +48,7 @@ const SearchResultList = ({ list, onAddClick }: SearchResultListProps) => {
                 fontWeight: 500,
                 minWidth: "50px",
               }}
-              onClick={() => onAddClick?.(track)}
+              onClick={() => handleAddClick(track)}
             >
               <AddIcon />
             </Button>
