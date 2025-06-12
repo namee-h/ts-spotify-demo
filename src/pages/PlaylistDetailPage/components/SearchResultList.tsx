@@ -64,7 +64,7 @@ const SearchResultList = ({ list }: SearchResultListProps) => {
           <Box display="flex" width="100%" gap={2}>
             <Box sx={{ flex: 1, minWidth: 0 }}>
               <Typography variant="body2" color="text.secondary" noWrap>
-                곡 제목
+                제목
               </Typography>
               <Typography fontWeight={600} noWrap>
                 {track.name}
@@ -73,7 +73,7 @@ const SearchResultList = ({ list }: SearchResultListProps) => {
 
             <Box sx={{ flex: 1, minWidth: 0 }}>
               <Typography variant="body2" color="text.secondary" noWrap>
-                가수
+                아티스트
               </Typography>
               <Typography fontWeight={600} noWrap>
                 {track.artists?.map((artist) => artist.name).join(", ")}
@@ -82,7 +82,7 @@ const SearchResultList = ({ list }: SearchResultListProps) => {
 
             <Box sx={{ flex: 1, minWidth: 0 }}>
               <Typography variant="body2" color="text.secondary" noWrap>
-                앨범명
+                앨범
               </Typography>
               <Typography fontWeight={600} noWrap>
                 {track.album?.name}

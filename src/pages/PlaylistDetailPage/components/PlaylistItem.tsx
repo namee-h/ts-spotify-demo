@@ -22,10 +22,10 @@ const PlaylistItem = ({ playlistItems }: PlaylistItemProps) => {
         <TableHead>
           <TableRow>
             <TableCell>#</TableCell>
-            <TableCell>Title</TableCell>
-            <TableCell>Album</TableCell>
-            <TableCell>Date added</TableCell>
-            <TableCell>Duration</TableCell>
+            <TableCell>제목</TableCell>
+            <TableCell>앨범</TableCell>
+            <TableCell>날짜</TableCell>
+            <TableCell>재생 시간</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

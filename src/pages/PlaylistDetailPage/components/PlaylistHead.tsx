@@ -7,7 +7,7 @@ const HeadContainer = styled(Box)({
   padding: "20px 16px",
   display: "flex",
   alignItems: "flex-end",
-  flexWrap: "wrap", // ✅ 반응형 대응
+  flexWrap: "wrap",
   gap: "24px",
 });
 
