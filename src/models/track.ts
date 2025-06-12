@@ -1,12 +1,7 @@
 import { SimplifiedAlbum } from "./album";
-import { Artist } from "./artist";
-import {
-  Copyrights,
-  ExternalIds,
-  ExternalUrls,
-  Image,
-  Restrictions,
-} from "./commonType";
+import { SimplifiedArtist } from "./artist";
+import { ExternalIds, ExternalUrls, Restrictions } from "./commonType";
+import { Episode } from "./episode";
 
 export interface PlaylistTrack {
   added_at?: string | null;
@@ -25,7 +20,7 @@ export interface PlaylistTrack {
 
 export interface Track {
   album?: SimplifiedAlbum;
-  artists?: Artist[];
+  artists?: SimplifiedArtist[];
   available_markets?: string[];
   disc_number?: number;
   duration_ms?: number;
@@ -46,53 +41,4 @@ export interface Track {
   type?: "track";
   uri?: string;
   is_local?: boolean;
-}
-
-export interface Episode {
-  //   audio_preview_url:
-  //     | string
-  //     | null /** @deprecated This field is deprecated by Spotify */;
-  description: string;
-  html_description: string;
-  duration_ms: number;
-  explicit: boolean;
-  external_urls: ExternalUrls;
-  href: string;
-  id: string;
-  images: Image[];
-  is_externally_hosted: boolean;
-  is_playable: boolean;
-  //   language?: string /** @deprecated This field is deprecated by Spotify */;
-  languages: string[];
-  name: string;
-  release_date: string;
-  release_date_precision: string;
-  resume_point?: {
-    fully_played?: boolean;
-    resume_position_ms?: number;
-  };
-  type: "episode";
-  uri: string;
-  restrictions?: Restrictions;
-  show: Show;
-}
-
-interface Show {
-  available_markets: string[];
-  copyrights: Copyrights[];
-  description: string;
-  html_description: string;
-  explicit: boolean;
-  external_urls: ExternalUrls;
-  href: string;
-  id: string;
-  images: Image[];
-  is_externally_hosted: boolean;
-  languages: string[];
-  media_type: string;
-  name: string;
-  publisher: string;
-  type: "show";
-  uri: string;
-  total_episodes: number;
 }

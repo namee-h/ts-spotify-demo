@@ -12,6 +12,7 @@ import { useInView } from "react-intersection-observer";
 import LoginButton from "../../common/components/buttons/LoginButton";
 import { AxiosError } from "axios";
 import Loading from "../../common/components/loadingSpinner/images/loading.gif";
+import EmptyPlaylistWithSearch from "./components/EmptyPlaylistWithSearch";
 
 function isAxiosError(error: unknown): error is AxiosError {
   return (error as AxiosError)?.isAxiosError === true;
@@ -45,7 +46,6 @@ const ScrollableContent = styled(Box)({
 });
 
 const PlaylistDetailPage = () => {
-  const [scrolled, setScrolled] = React.useState(false);
   const { id } = useParams<{ id: string }>();
 
   const {
@@ -161,7 +161,8 @@ const PlaylistDetailPage = () => {
 
       <ScrollableContent>
         {playlist?.tracks?.total === 0 ? (
-          <Typography>search</Typography>
+          // 플레이리스트 아이템 없을 때
+          <EmptyPlaylistWithSearch />
         ) : (
           <Box>
             {playlistItems && <PlaylistItem playlistItems={playlistItems} />}

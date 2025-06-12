@@ -1,6 +1,6 @@
 import { ApiResponse } from "./apiResponse";
-import { Artist } from "./artist";
-import { ExternalUrls, Image, Restriction } from "./commonType";
+import { SimplifiedArtist } from "./artist";
+import { ExternalUrls, Image, Restrictions } from "./commonType";
 
 export interface GetNewReleasesResponse {
   albums: ApiResponse<SimplifiedAlbum>;
@@ -17,8 +17,8 @@ export interface SimplifiedAlbum {
   name: string;
   release_date: string;
   release_date_precision: string;
-  restrictions?: Restriction;
+  restrictions?: Restrictions;
   type: string;
   uri: string;
-  artists: Artist[];
+  artists: SimplifiedArtist[];
 }
