@@ -5,7 +5,7 @@ import useClientCredentialToken from "./useClientCredentialToken";
 
 const useSearchItemsByKeyword = (params: SearchRequestParams) => {
   const clientCredentialToken = useClientCredentialToken();
-
+  const isEnabled = !!clientCredentialToken && params.q.trim() !== "";
   return useInfiniteQuery({
     queryKey: ["search", params],
     queryFn: ({ pageParam = 0 }) => {
@@ -31,6 +31,8 @@ const useSearchItemsByKeyword = (params: SearchRequestParams) => {
       }
       return undefined;
     },
+    enabled: isEnabled,
+    retry: 1,
   });
 };
 
