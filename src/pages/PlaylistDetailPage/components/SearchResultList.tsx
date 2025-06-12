@@ -10,11 +10,13 @@ interface SearchResultListProps {
 
 const SearchResultList = ({ list, onAddClick }: SearchResultListProps) => {
   return (
-    <List sx={{ width: "100%" }}>
+    <List sx={{ maxWidth: "100%", width: "100%" }}>
       {list.map((track) => (
         <ListItem
           key={track.id}
           sx={{
+            maxWidth: "100%",
+            width: "100%",
             py: 1,
             display: "flex",
             alignItems: "center",
