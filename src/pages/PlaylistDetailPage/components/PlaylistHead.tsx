@@ -4,7 +4,10 @@ import fallbackImage from "../../../common/assets/no-image.png";
 import { GetPlaylistResponse } from "../../../models/playlist";
 
 const HeadContainer = styled(Box)({
+  height: "100%",
   padding: "20px 16px",
+  display: "flex",
+  alignItems: "flex-end",
 });
 
 const PlaylistTitle = styled(Typography)(({ theme }) => ({
@@ -42,7 +45,7 @@ const PlaylistHead = ({ playlist }: PlaylistHeadProps) => {
   const durationMinutes = totalTracks * 3;
   const hours = Math.floor(durationMinutes / 60);
   const minutes = durationMinutes % 60;
-
+  const isFallback = !playlist.images?.[0].url;
   return (
     <HeadContainer>
       <Grid container spacing={4} alignItems="flex-end">
@@ -53,6 +56,7 @@ const PlaylistHead = ({ playlist }: PlaylistHeadProps) => {
             alt={playlist.name}
             sx={{
               width: "100%",
+              maxHeight: isFallback ? "750px" : "auto",
               aspectRatio: "1",
               objectFit: "cover",
               borderRadius: 2,

@@ -21,18 +21,20 @@ function isAxiosError(error: unknown): error is AxiosError {
 const PlaylistDetailContainer = styled(Box)({
   position: "relative",
   width: "100%",
-  height: "100vh",
+  height: "100dvh",
   overflow: "hidden",
   display: "flex",
   flexDirection: "column",
   marginTop: "20px",
+  padding: "40px 0px",
 });
 
 const PlaylistHeadWrapper = styled(Box)({
   position: "relative",
   zIndex: 1,
-  padding: "32px",
+  padding: "10px",
   flexShrink: 0,
+  maxHeight: "250px",
 });
 
 const ScrollableContent = styled(Box)({
@@ -149,17 +151,17 @@ const PlaylistDetailPage = () => {
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
           width: "100%",
-          height: "350px",
+          height: "250px",
           background: "linear-gradient(to bottom,rgb(50, 168, 115), #121212)",
           zIndex: 0,
         }}
       />
 
-      <PlaylistHeadWrapper>
+      <PlaylistHeadWrapper sx={{ flex: "0 0 35%" }}>
         {playlist && <PlaylistHead playlist={playlist} />}
       </PlaylistHeadWrapper>
 
-      <ScrollableContent>
+      <ScrollableContent sx={{ flex: "1 1 65%" }}>
         {playlist?.tracks?.total === 0 ? (
           // 플레이리스트 아이템 없을 때
           <EmptyPlaylistWithSearch />
