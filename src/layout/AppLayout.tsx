@@ -96,19 +96,6 @@ const AppLayout = () => {
           <Navbar />
         </Box>
         <Outlet />
-        {/* <Box
-          sx={{
-            flex: 1,
-            overflowX: "hidden",
-            overflowY: "auto",
-            scrollbarWidth: "none", // Firefox
-            "&::-webkit-scrollbar": {
-              display: "none", // Chrome, Safari
-            },
-          }}
-        >
-          <Outlet />
-        </Box> */}
       </ContentBox>
     </Layout>
   );

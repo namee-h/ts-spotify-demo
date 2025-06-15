@@ -4,7 +4,7 @@ import useGetNewReleases from "../../../hooks/useGetNewReleases";
 import LoadingSpinner from "../../../common/components/loadingSpinner/LoadingSpinner";
 import ErrorMessage from "../../../common/components/ErrorMessage";
 import { Grid } from "@mui/material";
-import Card from "../../../common/components/Card";
+import Card from "../../../common/components/AlbumCard";
 
 const NewReleases = () => {
   const { data, error, isLoading } = useGetNewReleases();

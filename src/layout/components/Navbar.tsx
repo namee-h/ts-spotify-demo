@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, Box, styled } from "@mui/material";
 import LoginButton from "../../common/components/buttons/LoginButton";
 import useGetCurrentUserProfile from "../../hooks/useGetCurrentUserProfile";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useNavigate } from "react-router";
+import { useLocation } from "react-router";
+import SearchInput from "../../common/components/SearchInput";
 
 const ProfileContainer = styled("div")({
   display: "flex",
@@ -13,12 +14,14 @@ const ProfileContainer = styled("div")({
 });
 
 const Navbar = () => {
-  const navigate = useNavigate();
   const { data: userProfile } = useGetCurrentUserProfile();
   console.log("user_profile data:", userProfile);
+  const location = useLocation();
+  const isSearchPage = location.pathname.startsWith("/search");
+  const [keyword, setKeyword] = useState<string>("");
+
   const logout = () => {
     localStorage.removeItem("access_token");
-    // navigate("/");
     window.location.reload();
   };
 
@@ -26,11 +29,16 @@ const Navbar = () => {
     <Box
       sx={{
         display: "flex",
-        justifyContent: "flex-end",
+        justifyContent: isSearchPage ? "space-between" : "flex-end",
         alignItems: "center",
         height: "64px",
       }}
     >
+      {isSearchPage && (
+        <Box width="450px">
+          <SearchInput keyword={keyword} onChange={setKeyword} />
+        </Box>
+      )}
       {userProfile ? (
         <ProfileContainer>
           <Avatar

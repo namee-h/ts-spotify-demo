@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Typography, Grid, Paper, styled } from "@mui/material";
 import useGetBrowseCategories from "../../hooks/useGetBrowseCategories";
-import SearchInput from "../../common/components/SearchInput";
 
 const SearchPageContainer = styled(Box)({
   display: "flex",
@@ -9,7 +8,7 @@ const SearchPageContainer = styled(Box)({
   position: "relative",
   height: "100dvh",
   overflow: "hidden",
-  zIndex: 0,
+  marginTop: "20px",
 });
 const getRandomColor = () => {
   const colors = [
@@ -31,14 +30,22 @@ const SearchPage = () => {
 
   return (
     <SearchPageContainer>
-      <div>
-        <SearchInput />
-      </div>
       <Typography variant="h5" fontWeight={600} my={2}>
         카테고리
       </Typography>
       <Box
-        sx={{ flex: 1, overflowY: "auto", paddingTop: "10px", pr: 1, pb: 2 }}
+        sx={{
+          flex: 1,
+          overflowY: "auto",
+          paddingTop: "10px",
+          pr: 1,
+          pb: 2,
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        }}
       >
         {/* 카테고리 카드 보여주기 */}
         <Grid container spacing={3}>

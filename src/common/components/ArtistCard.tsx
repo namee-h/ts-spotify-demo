@@ -1,7 +1,11 @@
 import { styled, Typography } from "@mui/material";
 import React from "react";
 import PlayButton from "./buttons/PlayButton";
+import fallbackImage from "../assets/no-image.png";
 const CardContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
   width: "100%",
   height: "100%",
   minWidth: "160px",
@@ -17,10 +21,11 @@ const CardContainer = styled("div")(({ theme }) => ({
   },
 }));
 
-const AlbumImage = styled("img")({
+const ArtistImage = styled("img")({
   width: "100%",
-  height: "auto",
-  borderRadius: "8px",
+
+  aspectRatio: 1,
+  borderRadius: "50%",
   marginBottom: "8px",
 });
 
@@ -44,23 +49,25 @@ interface CardProps {
   artistName: string | undefined;
 }
 
-const Card = ({ image, name, artistName }: CardProps) => {
+const ArtistCard = ({ image, name, artistName }: CardProps) => {
   return (
     <CardContainer>
       <div style={{ position: "relative", overflow: "hidden" }}>
-        <AlbumImage src={image} alt="album-img" />
+        <ArtistImage src={image || fallbackImage} alt="artist-img" />
         <Overlay className="overlay">
           <PlayButton />
         </Overlay>
       </div>
-      <EllipsisTypography variant="h2" marginBottom="4px">
-        {name || "No name"}
-      </EllipsisTypography>
-      <EllipsisTypography variant="body1" color="text.secondary">
-        {artistName || "No artist"}
-      </EllipsisTypography>
+      <div>
+        <EllipsisTypography variant="h2" marginBottom="4px">
+          {name || "No name"}
+        </EllipsisTypography>
+        <EllipsisTypography variant="body1" color="text.secondary">
+          {artistName || "No artist"}
+        </EllipsisTypography>
+      </div>
     </CardContainer>
   );
 };
 
-export default Card;
+export default ArtistCard;
