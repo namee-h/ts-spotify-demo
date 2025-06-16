@@ -77,7 +77,6 @@ export const addTrackToPlaylist = async (
 ): Promise<AddTrackToPlaylistResponse> => {
   try {
     const response = await api.post(`/playlists/${playlist_id}/tracks`, {
-      playlist_id,
       ...params,
     });
     return response.data;

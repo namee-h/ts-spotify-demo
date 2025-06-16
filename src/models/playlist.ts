@@ -58,6 +58,7 @@ export interface CreatePlaylistRequest {
 }
 
 export interface AddTrackToPlaylistRequest {
+  playlist_id: string;
   position?: number;
   uris?: string[];
 }

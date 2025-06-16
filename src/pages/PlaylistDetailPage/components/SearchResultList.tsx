@@ -3,12 +3,15 @@ import { Track } from "../../../models/track";
 import { Avatar, Box, Button, List, ListItem, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import useAddTrackToPlaylist from "../../../hooks/useAddTrackToPlaylist";
+import { useParams } from "react-router";
 
 interface SearchResultListProps {
   list: Track[];
 }
 
 const SearchResultList = ({ list }: SearchResultListProps) => {
+  const { id: playlist_id } = useParams<{ id: string }>();
+
   const { mutate: addTrack } = useAddTrackToPlaylist();
 
   const handleAddClick = (track: Track) => {
@@ -17,6 +20,7 @@ const SearchResultList = ({ list }: SearchResultListProps) => {
       return;
     }
     addTrack({
+      playlist_id: playlist_id!,
       uris: [track.uri],
     });
   };

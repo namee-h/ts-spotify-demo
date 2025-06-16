@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { SEARCH_TYPE } from "../../models/search";
 import AlbumCard from "../../common/components/AlbumCard";
-import TrackListItem from "../../common/TrackListItem";
+import TrackListItem from "../../common/components/TrackListItem";
 import ArtistCard from "../../common/components/ArtistCard";
 import LoadingSpinner from "../../common/components/loadingSpinner/LoadingSpinner";
 
