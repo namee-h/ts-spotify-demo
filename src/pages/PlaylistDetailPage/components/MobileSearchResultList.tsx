@@ -24,7 +24,6 @@ const StyledTrackTitle = styled(Typography)({
 
 const StyledTrackArtist = styled(Typography)({
   overflow: "hidden",
-  whiteSpace: "nowrap",
   color: "rgba(255,255,255,0.7)",
   fontSize: "0.875rem",
 });
@@ -47,6 +46,7 @@ const MobileSearchResultList = ({ list }: Props) => {
           key={track.id}
           sx={{
             display: "flex",
+            maxWidth: "100%",
             alignItems: "center",
             justifyContent: "flex-start",
             gap: 2,
