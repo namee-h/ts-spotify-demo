@@ -1,5 +1,13 @@
 import React from "react";
-import { Avatar, Box, Button, List, ListItem, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  List,
+  ListItem,
+  styled,
+  Typography,
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { Track } from "../../../models/track";
 import { useParams } from "react-router";
@@ -9,6 +17,17 @@ interface Props {
   list: Track[];
 }
 
+const StyledTrackTitle = styled(Typography)({
+  fontWeight: 600,
+  overflow: "hidden",
+});
+
+const StyledTrackArtist = styled(Typography)({
+  overflow: "hidden",
+  whiteSpace: "nowrap",
+  color: "rgba(255,255,255,0.7)",
+  fontSize: "0.875rem",
+});
 const MobileSearchResultList = ({ list }: Props) => {
   const { id: playlist_id } = useParams<{ id: string }>();
   const { mutate: addTrack } = useAddTrackToPlaylist();
@@ -50,13 +69,9 @@ const MobileSearchResultList = ({ list }: Props) => {
             sx={{ width: 48, height: 48, borderRadius: "8px" }}
           />
 
-          <Box sx={{ overflow: "hidden" }}>
-            <Typography fontWeight={600} noWrap>
-              {track.name}
-            </Typography>
-            <Typography variant="body2" color="text.secondary" noWrap>
-              {track.artists?.map((artist) => artist.name).join(", ")}
-            </Typography>
+          <Box sx={{ overflow: "hidden", minWidth: 0, flex: 1 }}>
+            <StyledTrackTitle>{track.name}</StyledTrackTitle>
+            <StyledTrackArtist>{track.artists?.[0].name}</StyledTrackArtist>
           </Box>
         </ListItem>
       ))}

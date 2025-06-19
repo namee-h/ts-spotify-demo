@@ -46,6 +46,7 @@ const EmptyPlaylistWithSearch = () => {
       flexDirection="column"
       alignItems="start"
       justifyContent="start"
+      sx={{ overflowX: "hidden" }}
       p={2}
       position="relative"
     >
