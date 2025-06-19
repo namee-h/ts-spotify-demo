@@ -25,6 +25,9 @@ const SearchResultContainer = styled(Box)({
   background: "linear-gradient(to bottom,rgb(53, 53, 53) 0%, #121212 100%)",
   borderRadius: "8px",
   maxWidth: "100%",
+  "@media (max-width: 320px)": {
+    padding: "15px",
+  },
 });
 
 const ScrollableContainer = styled(Box)({
@@ -41,6 +44,7 @@ const SearchTrackListContainer = styled(Box)({
   padding: "8px",
   borderRadius: "8px",
   maxHeight: "270px",
+  overflowX: "hidden",
   overflowY: "auto",
   pr: 1,
   scrollbarWidth: "none",
@@ -54,6 +58,33 @@ const BackgroundPaper = styled(Box)({
   padding: "8px",
   borderRadius: "8px",
 });
+
+const ResponsiveTitle = styled(Typography)(({ theme }) => ({
+  fontWeight: 600,
+  marginBottom: theme.spacing(3),
+  fontSize: "2rem",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "1.25rem",
+  },
+}));
+
+// 섹션 제목 (상위 결과, 노래, 아티스트, 앨범)
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  fontSize: "1.25rem",
+  fontWeight: 500,
+  marginBottom: theme.spacing(1),
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "1rem",
+  },
+}));
+
+// 본문 텍스트
+const ResponsiveBody = styled(Typography)(({ theme }) => ({
+  fontSize: "1rem",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "0.875rem",
+  },
+}));
 
 const SearchWithKeywordPage = () => {
   const { keyword } = useParams<{ keyword: string }>();
@@ -84,20 +115,18 @@ const SearchWithKeywordPage = () => {
 
   return (
     <SearchResultContainer p={3}>
-      <Typography variant="h4" fontWeight={600} mb={3}>
-        "{keyword}" 검색 결과
-      </Typography>
+      <ResponsiveTitle>"{keyword}" 검색 결과</ResponsiveTitle>
       {noResult ? (
-        <Typography variant="body1">
+        <ResponsiveBody variant="body1">
           검색어에 해당하는 결과값이 존재하지 않습니다.
-        </Typography>
+        </ResponsiveBody>
       ) : (
         <ScrollableContainer>
           <Grid container spacing={2} mb={5}>
             <Grid size={{ xs: 12, md: 4 }}>
-              <Typography variant="h6" gutterBottom>
+              <SectionTitle variant="h6" gutterBottom>
                 상위 결과
-              </Typography>
+              </SectionTitle>
 
               {tracks[0] ? (
                 <BackgroundPaper>
@@ -106,6 +135,9 @@ const SearchWithKeywordPage = () => {
                       width: "195px",
                       [theme.breakpoints.down("sm")]: {
                         margin: "0 auto",
+                      },
+                      "@media (max-width: 320px)": {
+                        width: "160px",
                       },
                     }}
                   >
@@ -117,16 +149,16 @@ const SearchWithKeywordPage = () => {
                   </Box>
                 </BackgroundPaper>
               ) : (
-                <Typography variant="body1" color="text.secondary">
+                <ResponsiveBody variant="body1" color="text.secondary">
                   상위 결과가 없습니다.
-                </Typography>
+                </ResponsiveBody>
               )}
             </Grid>
 
             <Grid size={{ xs: 12, md: 8 }}>
-              <Typography variant="h6" gutterBottom>
+              <SectionTitle variant="h6" gutterBottom>
                 노래
-              </Typography>
+              </SectionTitle>
               {tracks.length > 0 ? (
                 <SearchTrackListContainer>
                   {tracks.map((track) => (
@@ -134,18 +166,18 @@ const SearchWithKeywordPage = () => {
                   ))}
                 </SearchTrackListContainer>
               ) : (
-                <Typography variant="body1" color="text.secondary">
+                <ResponsiveBody variant="body1" color="text.secondary">
                   노래 결과가 없습니다.
-                </Typography>
+                </ResponsiveBody>
               )}
             </Grid>
           </Grid>
 
           {/* Artists */}
           <Box mb={5} sx={{ width: "100%" }}>
-            <Typography variant="h6" gutterBottom>
+            <SectionTitle variant="h6" gutterBottom>
               아티스트
-            </Typography>
+            </SectionTitle>
             {artists.length > 0 ? (
               <Grid container>
                 {artists.slice(0, visibleCount).map((artist) => (
@@ -161,17 +193,17 @@ const SearchWithKeywordPage = () => {
                 ))}
               </Grid>
             ) : (
-              <Typography variant="body1" color="text.secondary">
+              <ResponsiveBody variant="body1" color="text.secondary">
                 아티스트 결과가 없습니다.
-              </Typography>
+              </ResponsiveBody>
             )}
           </Box>
 
           {/* Albums */}
           <Box>
-            <Typography variant="h6" gutterBottom>
+            <SectionTitle variant="h6" gutterBottom>
               앨범
-            </Typography>
+            </SectionTitle>
             {albums.length > 0 ? (
               <Grid container>
                 {albums.slice(0, visibleCount).map((album) => (
@@ -187,9 +219,9 @@ const SearchWithKeywordPage = () => {
                 ))}
               </Grid>
             ) : (
-              <Typography variant="body1" color="text.secondary">
+              <ResponsiveBody variant="body1" color="text.secondary">
                 앨범 결과가 없습니다.
-              </Typography>
+              </ResponsiveBody>
             )}
           </Box>
         </ScrollableContainer>

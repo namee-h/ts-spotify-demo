@@ -8,7 +8,7 @@ import { Box, styled } from "@mui/material";
 
 const ScrollContainer = styled(Box)({
   maxHeight: "100dvh",
-  overflowY: "scroll",
+  overflowX: "hidden",
   scrollbarWidth: "none",
   msOverflowStyle: "none",
   "&::-webkit-scrollbar": {

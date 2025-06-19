@@ -8,12 +8,20 @@ import {
   MenuItem,
   Snackbar,
   Alert,
+  styled,
 } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Track } from "../../models/track";
 import useGetCurrentUserPlaylists from "../../hooks/useGetCurrentUserPlaylists";
 import useAddTrackToPlaylist from "../../hooks/useAddTrackToPlaylist";
 import useGetCurrentUserProfile from "../../hooks/useGetCurrentUserProfile";
+
+const DurationText = styled(Typography)(({ theme }) => ({
+  minWidth: 50,
+  [theme.breakpoints.down(350)]: {
+    display: "none",
+  },
+}));
 
 interface Props {
   track: Track;
@@ -98,9 +106,13 @@ const TrackListItem = ({ track }: Props) => {
         </Box>
       </Box>
 
-      <Typography variant="body2" color="text.secondary" sx={{ minWidth: 50 }}>
+      <DurationText
+        variant="body2"
+        color="text.secondary"
+        sx={{ minWidth: 50 }}
+      >
         {track.duration_ms ? formatDuration(track.duration_ms) : "-"}
-      </Typography>
+      </DurationText>
 
       <IconButton
         onClick={handleClick}
@@ -123,7 +135,19 @@ const TrackListItem = ({ track }: Props) => {
         anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
         PaperProps={{
-          style: { maxHeight: 48 * 5, width: "220px", overflowY: "auto" },
+          sx: {
+            maxHeight: 48 * 5,
+            width: "220px",
+            overflowY: "auto",
+            scrollbarWidth: "none", // Firefox
+            msOverflowStyle: "none", // IE/Edge
+            "&::-webkit-scrollbar": {
+              display: "none", // Chrome, Safari
+            },
+            "@media (max-width: 350px)": {
+              width: "180px",
+            },
+          },
           onScroll: (e: React.UIEvent<HTMLElement>) => {
             const target = e.currentTarget;
             const bottom =

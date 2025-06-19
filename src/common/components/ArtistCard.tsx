@@ -19,6 +19,16 @@ const CardContainer = styled("div")(({ theme }) => ({
   "&:hover .overlay": {
     opacity: 1,
   },
+
+  [theme.breakpoints.down("sm")]: {
+    minWidth: "140px",
+    padding: "8px",
+  },
+
+  "@media (max-width: 350px)": {
+    minWidth: "120px",
+    padding: "6px",
+  },
 }));
 
 const ArtistImage = styled("img")({
