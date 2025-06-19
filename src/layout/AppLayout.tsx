@@ -13,6 +13,7 @@ const Layout = styled("div")({
   display: "flex",
   height: "100dvh",
   padding: "8px",
+  overflowX: "hidden",
 });
 
 const Sidebar = styled("div")(({ theme }) => ({

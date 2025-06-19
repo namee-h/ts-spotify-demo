@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Typography, styled, Avatar, IconButton } from "@mui/material";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { Box, Typography, styled, Avatar } from "@mui/material";
 import fallbackImage from "../../../common/assets/no-image.png";
 import { GetPlaylistItemsResponse } from "../../../models/playlist";
 import { isTrack } from "../../../utils/isTrack";
@@ -18,6 +17,7 @@ const ItemContainer = styled(Box)(({ theme }) => ({
   backgroundColor: "#181818",
   borderRadius: 8,
   marginBottom: theme.spacing(1),
+  marginTop: "10px",
 }));
 
 const InfoArea = styled(Box)({
@@ -57,18 +57,6 @@ const MobilePlaylistItem = ({ item, index }: MobilePlaylistItemProps) => {
           </ArtistText>
         </Box>
       </InfoArea>
-      {/* <IconButton>
-        <MoreHorizIcon
-          sx={{
-            borderRadius: "50%",
-            color: "white",
-            "&:hover": {
-              color: "#1ed760",
-              backgroundColor: "#343434",
-            },
-          }}
-        />
-      </IconButton> */}
     </ItemContainer>
   );
 };
