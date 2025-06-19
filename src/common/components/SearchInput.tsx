@@ -31,6 +31,7 @@ const SearchInput = ({ keyword, onChange }: SearchInputProps) => {
     <StyledSearchWrapper elevation={3}>
       <TextField
         fullWidth
+        inputRef={inputRef}
         value={keyword}
         placeholder="노래를 검색해주세요"
         onChange={(e) => onChange(e.target.value)}
@@ -42,6 +43,14 @@ const SearchInput = ({ keyword, onChange }: SearchInputProps) => {
               <SearchIcon sx={{ color: "#1ed760" }} />
             </InputAdornment>
           ),
+          sx: {
+            "& input": {
+              fontSize: "16px",
+              "@media (max-width: 320px)": {
+                fontSize: "14px",
+              },
+            },
+          },
         }}
       />
     </StyledSearchWrapper>
