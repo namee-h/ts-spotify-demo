@@ -6,6 +6,8 @@ import {
   Snackbar,
   Alert,
   styled,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
@@ -25,6 +27,8 @@ const StyledBottomNavigationAction = styled(BottomNavigationAction)(
 );
 
 const MobileBottomNav = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const navigate = useNavigate();
   const location = useLocation();
   const { data: user } = useGetCurrentUserProfile();
@@ -103,7 +107,10 @@ const MobileBottomNav = () => {
         open={snackbarOpen}
         autoHideDuration={3000}
         onClose={() => setSnackbarOpen(false)}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        anchorOrigin={{
+          vertical: isMobile ? "bottom" : "top",
+          horizontal: "center",
+        }}
       >
         <Alert
           onClose={() => setSnackbarOpen(false)}
