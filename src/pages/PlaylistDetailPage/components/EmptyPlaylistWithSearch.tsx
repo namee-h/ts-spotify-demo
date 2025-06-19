@@ -28,7 +28,7 @@ const EmptyPlaylistWithSearch = () => {
     q: keyword,
     type: [SEARCH_TYPE.Track],
   });
-  console.log("search-data:", data);
+  // console.log("search-data:", data);
   const handleSearchKeyword = (event: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(event.target.value);
   };

@@ -13,7 +13,7 @@ const HipsterAlbums = () => {
     type: [SEARCH_TYPE.Album],
     limit: 6,
   });
-  console.log("hipster:", data);
+  //   console.log("hipster:", data);
   if (isLoading) {
     return <LoadingSpinner />;
   }

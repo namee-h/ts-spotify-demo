@@ -14,7 +14,7 @@ const OldTracks = () => {
     limit: 6,
     market: "KR",
   });
-  console.log("old tracks:", data);
+  // console.log("old tracks:", data);
   if (isLoading) {
     return <LoadingSpinner />;
   }

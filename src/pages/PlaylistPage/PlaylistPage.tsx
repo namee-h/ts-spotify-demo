@@ -41,7 +41,7 @@ const PlaylistPage = () => {
   });
 
   const { data: user } = useGetCurrentUserProfile();
-  console.log("mobile playlist:", data);
+  // console.log("mobile playlist:", data);
 
   useEffect(() => {
     if (inView && hasNextPage && !isFetchingNextPage) {

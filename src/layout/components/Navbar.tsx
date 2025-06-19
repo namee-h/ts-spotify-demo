@@ -19,7 +19,7 @@ const ProfileContainer = styled("div")(({ theme }) => ({
 
 const Navbar = () => {
   const { data: userProfile } = useGetCurrentUserProfile();
-  console.log("user_profile data:", userProfile);
+  // console.log("user_profile data:", userProfile);
   const location = useLocation();
   const isSearchPage = location.pathname.startsWith("/search");
   const isPlaylistPage = location.pathname.startsWith("/playlist");

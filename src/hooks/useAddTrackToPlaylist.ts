@@ -11,7 +11,7 @@ const useAddTrackToPlaylist = () => {
       return addTrackToPlaylist(playlist_id, params);
     },
     onSuccess: () => {
-      console.log("트랙 추가 성공");
+      // console.log("트랙 추가 성공");
       queryClient.invalidateQueries({
         queryKey: ["playlist-detail"],
       });

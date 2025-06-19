@@ -14,7 +14,7 @@ const NewTracks = () => {
     limit: 6,
     market: "ES",
   });
-  console.log("new tracks:", data);
+  //   console.log("new tracks:", data);
   if (isLoading) {
     return <LoadingSpinner />;
   }

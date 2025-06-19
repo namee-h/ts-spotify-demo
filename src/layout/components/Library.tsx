@@ -46,7 +46,7 @@ const Library = () => {
 
   if (!user) return <EmptyPlaylist />;
 
-  console.log("playlists:", data);
+  // console.log("playlists:", data);
 
   if (isLoading) {
     return <LoadingSpinner />;

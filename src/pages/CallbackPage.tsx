@@ -10,7 +10,7 @@ const CallbackPage = () => {
   let codeVerifier = localStorage.getItem("code_verifier");
   const { mutate: exchangeToken } = useExchangeToken({
     onSuccess: () => {
-      console.log("✅ 토큰 교환 성공->홈으로 이동");
+      // console.log("✅ 토큰 교환 성공->홈으로 이동");
       navigate("/");
     },
   });

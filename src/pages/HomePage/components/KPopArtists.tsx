@@ -14,7 +14,7 @@ const KPopArtists = () => {
     limit: 6,
     market: "KR",
   });
-  console.log("K-pop artists:", data);
+  //   console.log("K-pop artists:", data);
   if (isLoading) {
     return <LoadingSpinner />;
   }

@@ -14,7 +14,7 @@ export const getSpotifyAuthUrl = async () => {
 
   const scope = SCOPES;
   const authUrl = new URL("https://accounts.spotify.com/authorize");
-  console.log("🔐 Generated code_verifier:", codeVerifier);
+  // console.log("🔐 Generated code_verifier:", codeVerifier);
   // generated in the previous step
   window.localStorage.setItem("code_verifier", codeVerifier);
 
@@ -28,7 +28,7 @@ export const getSpotifyAuthUrl = async () => {
       redirect_uri: redirectUri,
     };
     authUrl.search = new URLSearchParams(Object.entries(params)).toString();
-    console.log("🎯 Redirecting to:", authUrl.toString());
+    // console.log("🎯 Redirecting to:", authUrl.toString());
 
     setTimeout(() => {
       window.location.href = authUrl.toString();

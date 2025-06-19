@@ -8,7 +8,7 @@ import AlbumCard from "../../../common/components/AlbumCard";
 
 const NewReleases = () => {
   const { data, error, isLoading } = useGetNewReleases();
-  console.log("ddd", data);
+  // console.log("ddd", data);
   if (isLoading) {
     return <LoadingSpinner />;
   }

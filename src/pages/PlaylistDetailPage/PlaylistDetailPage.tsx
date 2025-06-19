@@ -2,16 +2,14 @@ import React, { useEffect } from "react";
 import useGetPlaylist from "../../hooks/useGetPlaylist";
 import { Navigate, useParams } from "react-router";
 import PlaylistHead from "./components/PlaylistHead";
-import { Box, styled, Typography } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import useGetPlaylistItems from "../../hooks/useGetPlaylistItems";
 import LoadingSpinner from "../../common/components/loadingSpinner/LoadingSpinner";
 import ErrorMessage from "../../common/components/ErrorMessage";
 import PlaylistItem from "./components/PlaylistItem";
 import { PAGE_LIMIT } from "../../configs/commonConfig";
 import { useInView } from "react-intersection-observer";
-import LoginButton from "../../common/components/buttons/LoginButton";
 import { AxiosError } from "axios";
-import Loading from "../../common/components/loadingSpinner/images/loading.gif";
 import EmptyPlaylistWithSearch from "./components/EmptyPlaylistWithSearch";
 import UnauthorizedMessage from "../../common/components/UnauthorizeMessage";
 
@@ -38,7 +36,7 @@ const PlaylistHeadWrapper = styled(Box)(({ theme }) => ({
   maxHeight: "270px",
 
   [theme.breakpoints.down("sm")]: {
-    maxHeight: "none", // 📌 모바일에서는 높이 제한 제거
+    maxHeight: "none",
   },
 }));
 
@@ -60,7 +58,7 @@ const PlaylistDetailPage = () => {
     isLoading: isPlaylistLoading,
     error: playlistError,
   } = useGetPlaylist({ playlist_id: id! });
-  console.log("playlist-detail", playlist);
+  // console.log("playlist-detail", playlist);
 
   const {
     data: playlistItems,
@@ -88,8 +86,8 @@ const PlaylistDetailPage = () => {
   if (isPlaylistLoading || isPlaylistItemsLoading) return <LoadingSpinner />;
 
   if (playlistError || playlistItemsError) {
-    console.log("🔴 playlistError:", playlistError);
-    console.log("🔴 playlistItemsError:", playlistItemsError);
+    // console.log("🔴 playlistError:", playlistError);
+    // console.log("🔴 playlistItemsError:", playlistItemsError);
     if (
       (isAxiosError(playlistError) && playlistError.response?.status === 401) ||
       (isAxiosError(playlistItemsError) &&
