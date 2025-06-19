@@ -3,13 +3,26 @@ import { Box, Typography, styled } from "@mui/material";
 import fallbackImage from "../../../common/assets/no-image.png";
 import { GetPlaylistResponse } from "../../../models/playlist";
 
-const HeadContainer = styled(Box)({
+const HeadContainer = styled(Box)(({ theme }) => ({
   padding: "20px 16px",
   display: "flex",
   alignItems: "flex-end",
   flexWrap: "wrap",
   gap: "24px",
-});
+  flexDirection: "row",
+
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "row",
+  },
+
+  "@media (max-width: 425px)": {
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+    padding: "0",
+    gap: "5px",
+  },
+}));
 
 const PlaylistTitle = styled(Typography)(({ theme }) => ({
   fontWeight: "bold",
@@ -29,12 +42,20 @@ const PlaylistMeta = styled(Typography)({
   fontWeight: 400,
 });
 
-const GraySpan = styled("span")({
-  color: "gray",
-});
-
 const WhiteSpan = styled("span")({
   color: "white",
+  display: "inline", // 기본은 inline
+  "@media (max-width: 425px)": {
+    display: "block",
+  },
+});
+
+const GraySpan = styled("span")({
+  color: "gray",
+  display: "inline",
+  "@media (max-width: 425px)": {
+    display: "block",
+  },
 });
 
 interface PlaylistHeadProps {

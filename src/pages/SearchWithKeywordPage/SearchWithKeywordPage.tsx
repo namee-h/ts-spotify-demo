@@ -101,7 +101,14 @@ const SearchWithKeywordPage = () => {
 
               {tracks[0] ? (
                 <BackgroundPaper>
-                  <Box sx={{ width: "195px" }}>
+                  <Box
+                    sx={{
+                      width: "195px",
+                      [theme.breakpoints.down("sm")]: {
+                        margin: "0 auto",
+                      },
+                    }}
+                  >
                     <AlbumCard
                       image={tracks[0].album?.images?.[0]?.url || ""}
                       name={tracks[0].name || "Unknown"}

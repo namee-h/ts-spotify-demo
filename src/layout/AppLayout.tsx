@@ -7,6 +7,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import LibraryHead from "./components/LibraryHead";
 import Library from "./components/Library";
 import Navbar from "./components/Navbar";
+import MobileBottomNav from "./components/MobileBottomNav";
 
 const Layout = styled("div")({
   display: "flex",
@@ -90,6 +91,7 @@ const AppLayout = () => {
           flexDirection: "column",
           height: "100%",
           marginRight: 0,
+          paddingBottom: { xs: "70px", sm: 0 },
         }}
       >
         <Box sx={{ flex: "none" }}>
@@ -97,6 +99,7 @@ const AppLayout = () => {
         </Box>
         <Outlet />
       </ContentBox>
+      <MobileBottomNav />
     </Layout>
   );
 };

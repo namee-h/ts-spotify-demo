@@ -1,15 +1,27 @@
 import React from "react";
 import { Track } from "../../../models/track";
-import { Avatar, Box, Button, List, ListItem, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  List,
+  ListItem,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import useAddTrackToPlaylist from "../../../hooks/useAddTrackToPlaylist";
 import { useParams } from "react-router";
+import MobileSearchResultList from "./MobileSearchResultList";
 
 interface SearchResultListProps {
   list: Track[];
 }
 
 const SearchResultList = ({ list }: SearchResultListProps) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const { id: playlist_id } = useParams<{ id: string }>();
 
   const { mutate: addTrack } = useAddTrackToPlaylist();
@@ -24,7 +36,9 @@ const SearchResultList = ({ list }: SearchResultListProps) => {
       uris: [track.uri],
     });
   };
-  return (
+  return isMobile ? (
+    <MobileSearchResultList list={list} />
+  ) : (
     <List sx={{ maxWidth: "100%", width: "100%" }}>
       {list.map((track) => (
         <ListItem
