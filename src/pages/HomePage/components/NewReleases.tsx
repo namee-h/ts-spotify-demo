@@ -4,7 +4,7 @@ import useGetNewReleases from "../../../hooks/useGetNewReleases";
 import LoadingSpinner from "../../../common/components/loadingSpinner/LoadingSpinner";
 import ErrorMessage from "../../../common/components/ErrorMessage";
 import { Grid } from "@mui/material";
-import Card from "../../../common/components/AlbumCard";
+import AlbumCard from "../../../common/components/AlbumCard";
 
 const NewReleases = () => {
   const { data, error, isLoading } = useGetNewReleases();
@@ -18,13 +18,13 @@ const NewReleases = () => {
   return (
     <div>
       <Typography variant="h1" paddingTop="8px" marginBottom="8px">
-        New Released Albums
+        🆕 최신 앨범 💿
       </Typography>
       {data && data.albums.items.length > 0 ? (
         <Grid container spacing={2}>
           {data.albums.items.map((album) => (
             <Grid size={{ xs: 6, sm: 4, md: 2 }} key={album.id}>
-              <Card
+              <AlbumCard
                 image={album.images[0].url}
                 name={album.name}
                 artistName={album.artists[0].name}
