@@ -1,6 +1,8 @@
 import { Box, Button, styled, Typography } from "@mui/material";
 import React from "react";
 import { getSpotifyAuthUrl } from "../../utils/auth";
+import useGetCurrentUserProfile from "../../hooks/useGetCurrentUserProfile";
+import useCreatePlaylist from "../../hooks/useCreatePlaylist";
 
 const EmptyPlaylistCard = styled(Box)(({ theme }) => ({
   borderRadius: "8px",
@@ -16,8 +18,14 @@ const CreatePlaylistBtn = styled(Button)({
 });
 
 const EmptyPlaylist = () => {
+  const { mutate: createPlaylist } = useCreatePlaylist();
+  const { data: user } = useGetCurrentUserProfile();
   const handleToLogin = () => {
-    getSpotifyAuthUrl();
+    if (!user) {
+      getSpotifyAuthUrl();
+    } else {
+      createPlaylist({ name: "나의 플레이리스트" });
+    }
   };
   return (
     <EmptyPlaylistCard>
