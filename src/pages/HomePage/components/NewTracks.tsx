@@ -9,10 +9,10 @@ import fallbackImage from "../../../common/assets/no-image.png";
 
 const NewTracks = () => {
   const { data, isLoading, error } = useSearchItemsByKeyword({
-    q: "genre:k-pop year:2024",
-    type: [SEARCH_TYPE.Track, SEARCH_TYPE.Album],
-    limit: 6,
-    market: "ES",
+    q: "year:2025",
+    type: [SEARCH_TYPE.Track],
+    limit: 12,
+    market: "KR",
   });
   //   console.log("new tracks:", data);
   if (isLoading) {

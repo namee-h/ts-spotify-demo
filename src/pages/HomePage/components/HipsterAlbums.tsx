@@ -12,6 +12,7 @@ const HipsterAlbums = () => {
     q: "tag:hipster",
     type: [SEARCH_TYPE.Album],
     limit: 6,
+    market: "KR",
   });
   //   console.log("hipster:", data);
   if (isLoading) {

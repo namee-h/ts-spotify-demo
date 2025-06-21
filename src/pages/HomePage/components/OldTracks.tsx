@@ -9,9 +9,9 @@ import fallbackImage from "../../../common/assets/no-image.png";
 
 const OldTracks = () => {
   const { data, isLoading, error } = useSearchItemsByKeyword({
-    q: "genre:k-pop year:2008",
+    q: "year:2008",
     type: [SEARCH_TYPE.Track],
-    limit: 6,
+    limit: 12,
     market: "KR",
   });
   // console.log("old tracks:", data);
